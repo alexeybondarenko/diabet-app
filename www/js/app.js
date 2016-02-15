@@ -3,5 +3,6 @@
 angular.module('app', [
   'ionic',
   'ngStorage',
-  'angularMoment'
+  'angularMoment',
+  'ngHockeyapp'
 ]);
