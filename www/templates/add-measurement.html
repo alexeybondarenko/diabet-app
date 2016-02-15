@@ -1,0 +1,18 @@
+<ion-view view-title="Add measurement">
+  <ion-content class="padding">
+    <form class="form" ng-submit="save(form)" name="form" novalidate>
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Amount</span>
+          <input type="number" ng-model="model.value" required>
+        </label>
+        <label class="item item-input">
+          <textarea placeholder="Comment" ng-model="model.comment"></textarea>
+        </label>
+      </div>
+      <div class="padding">
+        <button type="submit" class="button button-block button-positive activated">Save</button>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

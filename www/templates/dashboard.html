@@ -1,0 +1,14 @@
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+    <a class="button button-positive button-block" ui-sref="add-measurement">New measurement</a>
+    <ion-list>
+      <ion-item class="item-divider">
+        History
+      </ion-item>
+      <ion-item ng-repeat="item in measurements | orderBy: item.date : true">
+        <span am-time-ago="item.date"></span>
+        <span class="item-note" ng-bind="item.value"></span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
