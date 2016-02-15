@@ -10,4 +10,4 @@ Free for any use.
 ## Support
 
 - [x] Manual
-- [] giHealth Align
+- [ ] giHealth Align
