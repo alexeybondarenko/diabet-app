@@ -9,5 +9,5 @@ Free for any use.
 
 ## Support
 
-- Manual
-- iHealth Align
+- [x] Manual
+- [] giHealth Align
