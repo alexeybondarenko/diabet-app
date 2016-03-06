@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').run(function ($ionicPlatform, $log) {
+angular.module('app').run(function ($ionicPlatform, $rootScope, $log) {
 
   document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -9,13 +9,54 @@ angular.module('app').run(function ($ionicPlatform, $log) {
     $log.debug('device ready');
 
     window.addEventListener('ihealthstatus', function (data) {
-      console.log('ihealth', JSON.stringify(data));
-      if (data.name == 'connect') {
-        alert('connect');
+      console.log('ihealth status', JSON.stringify(data));
+      switch (data.status) {
+        case 'init': {
+          break;
+        }
+        case 'verify': {
+          break;
+        }
+        case 'plugged': {
+          break;
+        }
+        case 'idps': {
+          break;
+        }
+        case 'connect': {
+          break;
+        }
+        case 'sendCodeBlock': {
+          break;
+        }
+        case 'stripIn': {
+          break;
+        }
+        case 'blood': {
+          break;
+        }
+        case 'result': {
+          break;
+        }
+        case 'stripOut': {
+          break;
+        }
+        case 'error': {
+          break;
+        }
       }
-      if (data.name == 'disconnect') {
-        alert('disconnect');
-      }
+    }, false);
+    window.addEventListener('ihealthconnect', function (data) {
+      console.log('ihealth connect', JSON.stringify(data));
+      $rootScope.$apply(function () {
+        $rootScope.connected = true;
+      })
+    }, false);
+    window.addEventListener('ihealthdisconnect', function (data) {
+      console.log('ihealth disconnect', JSON.stringify(data));
+      $rootScope.$apply(function () {
+        $rootScope.connected = false;
+      })
     }, false);
   }
 

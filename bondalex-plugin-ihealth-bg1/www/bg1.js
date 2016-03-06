@@ -4,7 +4,9 @@ cordova = require('cordova');
 
 var iHealth = function () {
   this.channels = {
-    ihealthstatus: cordova.addWindowEventHandler("ihealthstatus")
+    ihealthstatus: cordova.addWindowEventHandler("ihealthstatus"),
+    ihealthconnect: cordova.addWindowEventHandler("ihealthconnect"),
+    ihealthdisconnect: cordova.addWindowEventHandler("ihealthdisconnect"),
   };
   for (var key in this.channels) {
     this.channels[key].onHasSubscribersChange = onHasSubscribersChange;
@@ -12,7 +14,9 @@ var iHealth = function () {
 };
 
 function handlers() {
-  return ihealth.channels.ihealthstatus.numHandlers;
+  return Object.keys(ihealth.channels).reduce(function (sum, cur) {
+    return sum + ihealth.channels[cur].numHandlers
+  }, 0);
 }
 
 function onHasSubscribersChange () {
@@ -27,7 +31,19 @@ function onHasSubscribersChange () {
 iHealth.prototype._status = function (info) {
   console.log('status', JSON.stringify(info));
   if (info) {
-    cordova.fireWindowEvent("ihealthstatus", info);
+    switch (info.name) {
+      case 'connect': {
+        cordova.fireWindowEvent("ihealthconnect", info);
+        break;
+      }
+      case 'disconnect': {
+        cordova.fireWindowEvent("ihealthdisconnect", info);
+        break;
+      }
+      default: {
+        cordova.fireWindowEvent("ihealthstatus", info);
+      }
+    }
   }
 };
 

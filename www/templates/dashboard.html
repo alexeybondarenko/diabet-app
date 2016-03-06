@@ -1,5 +1,10 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
+    <p>
+      iHealth BG1:
+      <span ng-if="$root.connected">Connected</span>
+      <span ng-if="!$root.connected">Disconnected</span>
+    </p>
     <a class="button button-positive button-block" ui-sref="add-measurement">New measurement</a>
     <ion-list>
       <ion-item class="item-divider">
