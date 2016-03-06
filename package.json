@@ -23,15 +23,10 @@
     "ionic-plugin-keyboard",
     {
       "locator": "bondalex-plugin-ihealth-bg1",
-      "id": "com.bondalex.ihealth.bg1"
+      "id": "bondalex-ihealth-bg1"
     }
   ],
   "cordovaPlatforms": [
-    "ios",
-    {
-      "platform": "ios",
-      "version": "",
-      "locator": "ios"
-    }
+    "ios"
   ]
 }

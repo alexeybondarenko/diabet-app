@@ -11,8 +11,6 @@
 
 #import "BGMacroFile.h"
 #import "AudioBG1Communication.h"
-#import "BG3.h"
-#import "BG3Controller.h"
 #import "BG5.h"
 #import "BG5Controller.h"
 
