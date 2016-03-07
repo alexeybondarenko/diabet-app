@@ -1,10 +1,21 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
-    <p>
-      iHealth BG1:
-      <span ng-if="$root.connected">Connected</span>
-      <span ng-if="!$root.connected">Disconnected</span>
-    </p>
+    <dl>
+      <dt>Connect</dt>
+      <dd>{{glucometer.connect}}</dd>
+      <dt>Ready</dt>
+      <dd>{{glucometer.ready}}</dd>
+      <dt>Strip In</dt>
+      <dd>{{glucometer.stripIn}}</dd>
+      <dt>Blood</dt>
+      <dd>{{glucometer.blood}}</dd>
+      <dt>Result</dt>
+      <dd>{{glucometer.result}}</dd>
+      <dt>Error</dt>
+      <dd>
+        {{errors[glucometer.error]}}
+      </dd>
+    </dl>
     <a class="button button-positive button-block" ui-sref="add-measurement">New measurement</a>
     <ion-list>
       <ion-item class="item-divider">

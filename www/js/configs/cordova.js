@@ -7,56 +7,8 @@ angular.module('app').run(function ($ionicPlatform, $rootScope, $log) {
   function onDeviceReady() {
     // Now safe to use device APIs
     $log.debug('device ready');
-
     window.addEventListener('ihealthstatus', function (data) {
-      console.log('ihealth status', JSON.stringify(data));
-      switch (data.status) {
-        case 'init': {
-          break;
-        }
-        case 'verify': {
-          break;
-        }
-        case 'plugged': {
-          break;
-        }
-        case 'idps': {
-          break;
-        }
-        case 'connect': {
-          break;
-        }
-        case 'sendCodeBlock': {
-          break;
-        }
-        case 'stripIn': {
-          break;
-        }
-        case 'blood': {
-          break;
-        }
-        case 'result': {
-          break;
-        }
-        case 'stripOut': {
-          break;
-        }
-        case 'error': {
-          break;
-        }
-      }
-    }, false);
-    window.addEventListener('ihealthconnect', function (data) {
-      console.log('ihealth connect', JSON.stringify(data));
-      $rootScope.$apply(function () {
-        $rootScope.connected = true;
-      })
-    }, false);
-    window.addEventListener('ihealthdisconnect', function (data) {
-      console.log('ihealth disconnect', JSON.stringify(data));
-      $rootScope.$apply(function () {
-        $rootScope.connected = false;
-      })
+      $rootScope.$broadcast('ihealthstatus', data);
     }, false);
   }
 
