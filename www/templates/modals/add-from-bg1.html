@@ -1,0 +1,46 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <button class="button button-clear" ng-click="modal.hide()">Cancel</button>
+    <h1 class="title">iHealth Align</h1>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <p class="text-center">Follow instruction to capture blood glucose level.</p>
+    <ion-list>
+      <ion-item>
+        Connect iHealth Align
+        <span class="item-note">
+          <i ng-if="glucometer.connect" class="ion ion-checkmark balanced"></i>
+          <i ng-if="!glucometer.connect">wait</i>
+        </span>
+      </ion-item>
+      <ion-item>
+        Wait
+        <span class="item-note">
+          <i ng-if="glucometer.ready" class="ion ion-checkmark balanced"></i>
+          <i ng-if="!glucometer.ready">wait</i>
+        </span>
+      </ion-item>
+      <ion-item>
+        Insert test strip
+        <span class="item-note">
+          <i ng-if="glucometer.stripIn" class="ion ion-checkmark balanced"></i>
+          <i ng-if="!glucometer.stripIn">wait</i>
+        </span>
+      </ion-item>
+      <ion-item>
+        Add blood drop to the test strip
+        <span class="item-note">
+          <i ng-if="glucometer.blood" class="ion ion-checkmark balanced"></i>
+          <i ng-if="!glucometer.blood">wait</i>
+        </span>
+      </ion-item>
+      <ion-item>
+        Wait for result
+        <span class="item-note">
+          <i ng-if="glucometer.result" class="ion ion-checkmark balanced"></i>
+          <i ng-if="!glucometer.result">wait</i>
+        </span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-modal-view>

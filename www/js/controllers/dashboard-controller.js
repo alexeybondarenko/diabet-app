@@ -1,8 +1,6 @@
 'use strict';
 
-angular.module('app').controller('DashboardController', function ($scope, $ionicPlatform, Measurements) {
-  $scope.measurements = Measurements.all();
-
+angular.module('app').factory('IHealthBG1', function () {
   function IHealthBG1 () {
     this.reset();
   }
@@ -14,54 +12,89 @@ angular.module('app').controller('DashboardController', function ($scope, $ionic
     this.result = false;
     this.error = false;
   };
+  return IHealthBG1;
+});
 
-  var glucometer = new IHealthBG1();
+angular.module('app').controller('DashboardController', function ($scope, $ionicPlatform, $ionicModal, $ionicPopup,
+                                                                  lodash, IHealthBG1, Measurements, Measurement) {
+  $scope.measurements = null;
 
-  $scope.glucometer = glucometer;
+  function updateMeasurements () {
+    $scope.measurements = Measurements.all();
+  }
+
+  updateMeasurements();
+
+  $scope.glucometer = new IHealthBG1();
   $scope.errors = {};
+
   $ionicPlatform.ready(function () {
-    $scope.errors = ihealth.ERROR_CODES;
+    $scope.errors = typeof ihealth !== 'undefined' ? ihealth.ERROR_CODES : {};
   });
+
+  $scope.modal = null;
+  $ionicModal.fromTemplateUrl('templates/modals/add-from-bg1.html', {
+    scope: $scope
+  }).then(function (modal) {
+    $scope.modal = modal;
+  });
+
+  var resultTemplate = lodash.template('Your result is {{result}} mg/dL');
 
   $scope.$on('ihealthstatus', function (e, info) {
     var status = info.status,
       data = info.data;
-    console.log(status, data);
     switch (status) {
       case 'connect': {
-        glucometer.reset();
-        glucometer.connect = true;
-        break;
-      }
-      case 'ready': {
-        glucometer.ready = true;
-        break;
-      }
-      case 'stripIn': {
-        glucometer.stripIn = true;
-        break;
-      }
-      case 'blood': {
-        glucometer.blood = true;
-        break;
-      }
-      case 'result': {
-        glucometer.result = data;
-        break;
-      }
-      case 'stripOut': {
-        glucometer.stripIn = false;
-        break;
-      }
-      case 'error': {
-        glucometer.error = data ? data.status : null;
+        $scope.modal.show();
+        $scope.glucometer.reset();
+        $scope.glucometer.connect = true;
         break;
       }
       case 'disconnect': {
-        glucometer.reset();
+        $scope.modal.hide();
+        $scope.glucometer.reset();
+        $scope.glucometer.connect = false;
+        break;
+      }
+      case 'ready': {
+        $scope.glucometer.ready = true;
+        break;
+      }
+      case 'stripIn': {
+        $scope.glucometer.stripIn = true;
+        $scope.glucometer.blood = false;
+        $scope.glucometer.result = null;
+        break;
+      }
+      case 'stripOut': {
+        $scope.glucometer.stripIn = false;
+        $scope.glucometer.blood = false;
+        $scope.glucometer.result = null;
+        break;
+      }
+      case 'blood': {
+        $scope.glucometer.blood = true;
+        break;
+      }
+      case 'result': {
+        $scope.glucometer.result = data ? data.result : null;
+        $scope.modal.hide();
+        var measurement = new Measurement();
+        measurement.value = $scope.glucometer.result;
+        Measurements.add(measurement);
+
+        updateMeasurements();
+
+        $ionicPopup.alert({
+          title: 'Result',
+          template: resultTemplate({result: $scope.glucometer.result})
+        });
+
         break;
       }
     }
     $scope.$apply();
-  })
+  });
+
 });
