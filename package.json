@@ -4,7 +4,7 @@
   "description": "Application for management of measurements of glucose level in blood.",
   "scripts": {
     "start": "ionic serve"
-  }
+  },
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
