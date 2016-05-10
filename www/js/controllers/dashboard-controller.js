@@ -62,7 +62,7 @@ angular.module('app').controller('DashboardController', function ($scope, $timeo
     legend: {
       display: false
     }
-  }
+  };
 
   $scope.glucometer = new IHealthBG1();
   $scope.errors = {};
