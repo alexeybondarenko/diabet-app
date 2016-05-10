@@ -1,5 +1,5 @@
 {
-  "name": "DiabetApp",
+  "name": "diabet.app",
   "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.2.4"
@@ -8,7 +8,6 @@
     "ngstorage": "~0.3.10",
     "angular-moment": "~0.10.3",
     "lodash": "^4.6.1",
-    "angular-chart.js": "^0.10.2",
-    "Chart.js": "^2.1.2"
+    "angular-chart.js": "https://github.com/alexeybondarenko/angular-chart.js.git#master"
   }
 }
