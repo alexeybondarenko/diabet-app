@@ -4,5 +4,6 @@ angular.module('app', [
   'ionic',
   'ngStorage',
   'angularMoment',
-  'ngHockeyapp'
+  'ngHockeyapp',
+  'chart.js'
 ]);

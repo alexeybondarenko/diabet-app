@@ -18,14 +18,14 @@ angular.module('app').factory('Measurement', function () {
 
     this.id = obj.id || guid();
     this.value = obj.value;
-    this.date = obj.date || new Date();
+    this.date = obj.date ? new Date(obj.date) : new Date();
 
     this.comment = obj.comment;
   }
 
   return Measurement;
 });
-angular.module('app').service('Measurements', function ($localStorage) {
+angular.module('app').service('Measurements', function ($localStorage, Measurement) {
 
 
   var storage = $localStorage.$default({
@@ -33,7 +33,11 @@ angular.module('app').service('Measurements', function ($localStorage) {
   });
 
   this.all = function () {
-    return storage.measurements;
+    return storage.measurements.map(function (item) {
+
+      var res = new Measurement(item);
+      return res;
+    });
   };
   this.add = function (item) {
     storage.measurements.push(item);

@@ -6,13 +6,18 @@
     <title>Diabet app</title>
 
     <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="lib/angular-chart.js/dist/angular-chart.css" rel="stylesheet">
 
     <!-- ionic/angularjs js -->
+
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-    <script src="lib/ngstorage/ngStorage.js"></script>
     <script src="lib/moment/moment.js"></script>
+    <script src="lib/Chart.js/dist/Chart.js"></script>
+
+    <script src="lib/ngstorage/ngStorage.js"></script>
     <script src="lib/angular-moment/angular-moment.js"></script>
     <script src="lib/lodash/lodash.js"></script>
+    <script src="lib/angular-chart.js/angular-chart.js"></script>
 
     <!-- your app's js -->
     <script src="js/modules/hockeyapp.js"></script>
@@ -23,12 +28,15 @@
     <script src="js/configs/cordova.js"></script>
     <script src="js/configs/hockeyapp.js"></script>
 
+    <script src="js/directives/chart-line.js"></script>
+
     <script src="js/controllers/dashboard-controller.js"></script>
     <script src="js/controllers/add-measurement-controller.js"></script>
     <script src="js/controllers/add-from-bg1-controller.js"></script>
 
     <script src="js/services/measurements.js"></script>
     <script src="js/services/lodash.js"></script>
+    <script src="js/services/ihealth-bg1.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -37,7 +45,7 @@
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
-    <ion-nav-bar class="bar-stable">
+    <ion-nav-bar class="bar-positive">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>

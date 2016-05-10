@@ -9730,3 +9730,93 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+.history-placeholder {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: #666;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9); }
+  .history-placeholder .icon {
+    font-size: 80px; }
+  .history-placeholder .text {
+    margin-top: 20px;
+    font-size: 14px; }
+
+.page-dashboard {
+  background-color: #f9f9f9; }
+
+.page-addMeasurement {
+  background: #f9f9f9; }
+
+.button-panel {
+  text-align: center;
+  margin: 20px 0; }
+  .button-panel .caption {
+    margin-top: 13px;
+    font-size: 13px;
+    opacity: .85; }
+
+.button-positive--dark {
+  border-color: transparent;
+  background-color: #0b5adf;
+  color: #fff; }
+  .button-positive--dark:hover {
+    color: #fff;
+    text-decoration: none; }
+  .button-positive--dark.active, .button-positive--dark.activated {
+    background-color: #0c60ee; }
+  .button-positive--dark.button-clear {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color: #0b5adf; }
+  .button-positive--dark.button-icon {
+    border-color: transparent;
+    background: none; }
+  .button-positive--dark.button-outline {
+    border-color: #0b5adf;
+    background: transparent;
+    color: #0b5adf; }
+    .button-positive--dark.button-outline.active, .button-positive--dark.button-outline.activated {
+      background-color: #0b5adf;
+      box-shadow: none;
+      color: #fff; }
+
+.input-caption {
+  width: 100%;
+  position: relative;
+  display: flex; }
+  .input-caption .caption {
+    right: 0;
+    max-width: 30%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    padding: 0 8px;
+    font-size: 14px;
+    vertical-align: middle;
+    line-height: 32px;
+    color: #666; }
+
+.chart-panel {
+  margin: 10px 0 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: linear-gradient(white, #f9f9f9);
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3); }
+  .chart-panel .title {
+    margin: 5px;
+    color: #444;
+    font-weight: 600; }
+  .chart-panel .placeholder {
+    padding: 50px 0;
+    text-align: center;
+    font-size: 13px;
+    background: url("../img/line-chart-placeholder.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+    text-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    color: #555;
+    margin: -5px -10px; }

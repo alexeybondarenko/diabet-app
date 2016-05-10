@@ -1,8 +1,26 @@
-<ion-view view-title="Dashboard">
+<ion-view view-title="Dashboard" class="page-dashboard">
   <ion-content class="padding">
     <!--<a class="button button-positive button-block" ng-click="modal.show()">Modal</a>-->
-    <a class="button button-positive button-block" ui-sref="add-measurement">New measurement</a>
-    <ion-list>
+    <div class="chart-panel">
+      <div ng-if="measurements.length >= 2">
+        <div class="title">Weekly</div>
+        <chart-line ng-if="measurements.length >= 2" data="filterWeekly(measurements)" key-y="value" key-x="date"  options="chartOptions"></chart-line>
+      </div>
+      <div class="placeholder" ng-if="measurements.length < 2">
+        Not enough data for statistic
+      </div>
+    </div>
+    <!--<div class="history-placeholder" ng-if="measurements.length < 1">-->
+      <!--<i class="icon ion ion-erlenmeyer-flask"></i>-->
+      <!--<div class="text">No records available</div>-->
+    <!--</div>-->
+    <div class="button-panel">
+      <a class="button button-positive button-block" ui-sref="add-measurement">New measurement</a>
+      <div class="caption">
+        or connect glucometer with your device
+      </div>
+    </div>
+    <ion-list ng-if="measurements.length">
       <ion-item class="item-divider">
         History
       </ion-item>

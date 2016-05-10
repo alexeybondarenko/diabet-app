@@ -21,3 +21,12 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+@import "components/history-placeholder";
+@import "components/page-dashboard";
+@import "components/page-addMeasurement";
+
+@import "components/button-panel";
+@import "components/button-positive--dark";
+@import "components/input-caption";
+
+@import "components/chart-panel";
